@@ -1,4 +1,4 @@
-**This repository is just a mirror. The [original code](https://gitlab.com/akutschi/janni/) is maintained at [GitLab](https://gitlab.com/)**
+**The GitHub repository is just a mirror. The [original code](https://gitlab.com/akutschi/janni/) is maintained at [GitLab](https://gitlab.com/)**
 
 # JaNNI - Just another Neural Network Implementation
 
