@@ -10,7 +10,7 @@ The long term goal is to write a modular application so that different activatio
 
 ## Dependencies for Running Locally
 
-NOTE: Build and run was not tested on Windows, it might work, it might not work.
+**NOTE:** Build and run was _neither tested under Windows nor macOS_, it might work, it might not work.
 
 * cmake >= 3.8
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
@@ -22,13 +22,14 @@ NOTE: Build and run was not tested on Windows, it might work, it might not work.
   * Linux: gcc / g++ is installed by default on most Linux distros
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
+* **No other additional libraries are required**
 
 ## Basic Build Instructions
 
 1. Clone this repo.
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./JaNNI`.
+4. Run it: `./JaNNI`
 
 ## Rubric
 
