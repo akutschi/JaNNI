@@ -20,9 +20,19 @@ public:
     MNISTDataSet(const std::string&, const std::string&);
 
     MNISTDataEntry mnist_struct(int&) const;                    // Getter to receive a struct from mnist_data
+    std::vector<int> data_magic_values() const;
+    std::vector<int> data_dimension_values() const;
+    std::vector<int> label_magic_values() const;
+    std::vector<int> label_dimension_values() const;
+
 private:  
     std::vector<MNISTDataEntry> mnist_data;                     // Vector of structs, holds all MNIST data
     void mnist_struct(const std::string&, const std::string&);  // Setter to fill up the vector of structs
+    std::vector<int> data_magic_number;
+    std::vector<int> data_magic_dimensions;
+    std::vector<int> label_magic_number;
+    std::vector<int> label_magic_dimensions;
+    
 };
 
 
