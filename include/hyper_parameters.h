@@ -23,9 +23,6 @@ public:
 private:
     std::vector<std::vector<double>> weights;
     std::vector<int> neurons_per_layer;
-    int number_input_layer;
-    int number_hidden_layers;
-    int number_output_layer;
     float learning_rate;
 };
 
