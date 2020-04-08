@@ -19,6 +19,7 @@ class MNISTDataSet {
 public:
     MNISTDataSet(const std::string&, const std::string&);
 
+    std::vector<MNISTDataEntry> mnist_struct() const;
     MNISTDataEntry mnist_struct(int&) const;                    // Getter to receive a struct from mnist_data
     std::vector<int> data_magic_values() const;
     std::vector<int> data_dimension_values() const;

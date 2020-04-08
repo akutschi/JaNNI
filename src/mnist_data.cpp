@@ -6,6 +6,10 @@ MNISTDataSet::MNISTDataSet(const std::string& data_path, const std::string& labe
     mnist_struct(data_path, label_path);
 }
 
+std::vector<MNISTDataEntry> MNISTDataSet::mnist_struct() const {
+    return mnist_data;
+}
+
 MNISTDataEntry MNISTDataSet::mnist_struct(int& row) const {
     return mnist_data[row];
 }
