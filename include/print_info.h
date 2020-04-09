@@ -3,10 +3,11 @@
 
 #include <string>
 
-
-class PrintInfo {
+class PrintInfo
+{
 public:
     void welcome_message() const;
+    int proceed_confirmation();
     void done_message() const;
 };
 
