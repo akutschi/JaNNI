@@ -34,7 +34,7 @@ int PrintInfo::proceed_confirmation()
         }
         else
         {
-            std::cout << "A simple question a you failed... So sad..." << std::endl;
+            std::cout << "A simple question and you failed... So sad..." << std::endl;
         }
     }
 }
