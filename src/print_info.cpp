@@ -6,10 +6,10 @@
 void PrintInfo::welcome_message() const
 {
     std::cout << "Welcome to JaNNI - Just another Neural Network Implementation\n\n";
-    std::cout << "JaNNI is a simple neural network that uses the MNIST data set for training and\n";
-    std::cout << "testing. Especially the training might run from a few minutes up to several\n";
-    std::cout << "hours. The computation time depends on the settings as well as on the system\n";
-    std::cout << "you are using.\n"
+    std::cout << "JaNNI is a simple neural network application that uses the MNIST data set for\n";
+    std::cout << "training and testing. Especially the training might run from a few minutes up\n";
+    std::cout << "to several hours. The computation time depends on the settings as well as on\n";
+    std::cout << "the system you are using.\n"
               << std::endl;
 }
 
