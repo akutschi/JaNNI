@@ -17,10 +17,10 @@ public:
                const std::initializer_list<int> &,
                const float &);
 
-    void forward_propagation();
-    void calculate_loss();
-    void back_propagation();
-    void update_weights();
+    virtual void forward_propagation() = 0;
+    virtual void calculate_loss() = 0;
+    virtual void back_propagation() = 0;
+    virtual void update_weights() = 0;
 
 protected:
     MNISTDataSet _mnist_training_data;
