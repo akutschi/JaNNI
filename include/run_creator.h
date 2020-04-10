@@ -17,6 +17,11 @@ public:
                const std::initializer_list<int> &,
                const float &);
 
+    void forward_propagation();
+    void calculate_loss();
+    void back_propagation();
+    void update_weights();
+
 private:
     MNISTDataSet _mnist_training_data;
     MNISTDataSet _mnist_test_data;
@@ -24,3 +29,4 @@ private:
 };
 
 #endif
+
