@@ -9,7 +9,7 @@ namespace WeightInitialization
 // Functor for the generator in std::generate
 struct weight_generator_simple
 {
-    int prev_layer;
+    int _prev_layer;
     weight_generator_simple(int);
     double operator()();
 };

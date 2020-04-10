@@ -6,13 +6,13 @@
 class ExecutionTime
 {
 public:
-    void set_start_time();
-    void set_end_time();
+    void start_time();
+    void end_time();
     void duration_time();
 
 private:
-    std::chrono::high_resolution_clock::time_point t_start_;
-    std::chrono::high_resolution_clock::time_point t_end_;
+    std::chrono::high_resolution_clock::time_point _t_start;
+    std::chrono::high_resolution_clock::time_point _t_end;
 };
 
 #endif

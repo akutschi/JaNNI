@@ -31,6 +31,8 @@ private:
     std::vector<int> test_data_magic_dimensions;
     std::vector<int> test_label_magic_number;
     std::vector<int> test_label_magic_dimensions;
+    std::vector<std::vector<double>> weights;
+    float learning_rate_;
 };
 
 #endif

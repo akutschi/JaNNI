@@ -6,29 +6,29 @@
 
 HyperParameters::HyperParameters(const std::initializer_list<int> &layer_settings, const float &learning_rate_setting)
 {
-    neurons_per_layer_ = layer_settings;
-    learning_rate_ = learning_rate_setting;
-    create_weight_network();
+    _neurons_per_layer = layer_settings;
+    _learning_rate = learning_rate_setting;
+    create_weights();
 }
 
-std::vector<std::vector<double>> HyperParameters::get_weight_network() const
+std::vector<std::vector<double>> HyperParameters::weights() const
 {
-    return weights_;
+    return _weights;
 }
 
-void HyperParameters::create_weight_network()
+void HyperParameters::create_weights()
 {
-    int weight_layers = neurons_per_layer_.size() - 1;
-    weights_.resize(weight_layers);
+    int weight_layers = _neurons_per_layer.size() - 1;
+    _weights.resize(weight_layers);
 
     for (int i = 0; i < weight_layers; i++)
     {
-        weights_[i].resize(neurons_per_layer_[i] * neurons_per_layer_[i + 1]);
-        std::generate(weights_[i].begin(), weights_[i].end(), WeightInitialization::weight_generator_simple(neurons_per_layer_[i]));
+        _weights[i].resize(_neurons_per_layer[i] * _neurons_per_layer[i + 1]);
+        std::generate(_weights[i].begin(), _weights[i].end(), WeightInitialization::weight_generator_simple(_neurons_per_layer[i]));
     }
 }
 
-float HyperParameters::get_learning_rate()
+float HyperParameters::learning_rate() const
 {
-    return learning_rate_;
+    return _learning_rate;
 }
