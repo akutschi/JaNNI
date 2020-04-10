@@ -22,7 +22,7 @@ public:
     void back_propagation();
     void update_weights();
 
-private:
+protected:
     MNISTDataSet _mnist_training_data;
     MNISTDataSet _mnist_test_data;
     HyperParameters _hyper_parameters;
