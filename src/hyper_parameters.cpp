@@ -11,20 +11,25 @@ HyperParameters::HyperParameters(const std::initializer_list<int> &layer_setting
     create_weights();
 }
 
-std::vector<std::vector<double>> HyperParameters::weights() const
+std::vector<WeightMatrices> HyperParameters::weights() const
 {
     return _weights;
 }
 
 void HyperParameters::create_weights()
 {
-    int weight_layers = _neurons_per_layer.size() - 1;
-    _weights.resize(weight_layers);
+    int weight_layers = _neurons_per_layer.size() - 1; // Calculate the required number of weight matrices
+    _weights.resize(weight_layers);                    // Resize the struct that contains the weight matrices
 
     for (int i = 0; i < weight_layers; i++)
     {
-        _weights[i].resize(_neurons_per_layer[i] * _neurons_per_layer[i + 1]);
-        std::generate(_weights[i].begin(), _weights[i].end(), WeightInitialization::weight_generator_simple(_neurons_per_layer[i]));
+        _weights[i].layer_weight_matrix.resize(_neurons_per_layer[i]); // Resize the 'first' vector of vectors
+
+        for (int j = 0; j < _neurons_per_layer[i+1]; j++)
+        {
+            _weights[i].layer_weight_matrix[j].resize(_neurons_per_layer[i + 1]); // Resize the 'second' vector of vectors
+            std::generate(_weights[i].layer_weight_matrix[j].begin(), _weights[i].layer_weight_matrix[j].end(), WeightInitialization::weight_generator_simple(_neurons_per_layer[i]));
+        }
     }
 }
 
