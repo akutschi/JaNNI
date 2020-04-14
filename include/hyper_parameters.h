@@ -13,6 +13,7 @@ public:
     HyperParameters(const std::initializer_list<int> &, const float &);
 
     void create_weights();
+    void update_weights();
     std::vector<std::vector<double>> weights() const; // Get whole weight network "matrix"
     float learning_rate() const;
 

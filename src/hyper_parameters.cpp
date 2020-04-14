@@ -28,6 +28,10 @@ void HyperParameters::create_weights()
     }
 }
 
+void HyperParameters::update_weights() {
+
+}
+
 float HyperParameters::learning_rate() const
 {
     return _learning_rate;
