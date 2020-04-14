@@ -20,7 +20,6 @@ public:
     virtual void forward_propagation() = 0;
     virtual void calculate_loss() = 0;
     virtual void back_propagation() = 0;
-    virtual void update_weights() = 0;
 
 protected:
     MNISTDataSet _mnist_training_data;
@@ -29,4 +28,3 @@ protected:
 };
 
 #endif
-
