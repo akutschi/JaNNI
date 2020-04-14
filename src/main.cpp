@@ -2,7 +2,7 @@
 
 #include "print_info.h"
 #include "execution_time.h"
-#include "run_creator.h"
+#include "run_mnist.h"
 
 int main()
 {
@@ -14,10 +14,10 @@ int main()
 
     ExecutionTime timer_setup;
     timer_setup.start_time();
-    RunCreator run("../mnist_data/train-images-idx3-ubyte", "../mnist_data/train-labels-idx1-ubyte", // Training data set
-                   "../mnist_data/t10k-images-idx3-ubyte", "../mnist_data/t10k-labels-idx1-ubyte",   // Test data set
-                   {768, 200, 40, 10},                                                               // Layer settings, nodes per layer
-                   0.05);                                                                            // Learning rate
+    RunMNIST run("../mnist_data/train-images-idx3-ubyte", "../mnist_data/train-labels-idx1-ubyte", // Training data set
+                 "../mnist_data/t10k-images-idx3-ubyte", "../mnist_data/t10k-labels-idx1-ubyte",   // Test data set
+                 {768, 200, 40, 10},                                                               // Layer settings, nodes per layer
+                 0.05);                                                                            // Learning rate
     timer_setup.end_time();
     timer_setup.duration_time();
 
