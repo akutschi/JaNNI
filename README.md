@@ -112,24 +112,7 @@ This files contain namespaces were the corresponding function are stored. This f
 
   + The project makes use of references in function declarations.
 	  + See `idx_data.h/.cpp`
-  + The project uses destructors appropriately.
-	  + At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor.
-  + The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate.
-	  + The project follows the Resource Acquisition Is Initialization pattern where appropriate, by allocating objects at compile-time, initializing objects when they are declared, and utilizing scope to ensure their automatic destruction.
   + The project follows the Rule of 5.
-	  + For all classes, if any one of the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor are defined, then all of these functions are defined.
   + The project uses move semantics to move data, instead of copying it, where possible.
 	  + See `mnist_data.cpp`
-  + The project uses smart pointers instead of raw pointers.
-	  + The project uses at least one smart pointer: unique_ptr, shared_ptr, or weak_ptr. The project does not use raw pointers.
 
-### Concurrency
-
-  + The project uses multithreading.
-	  + The project uses multiple threads in the execution.
-  + A promise and future is used in the project.
-	  + A promise and future is used to pass data from a worker thread to a parent thread in the project code.
-  + A mutex or lock is used in the project.
-    + A mutex or lock (e.g. std::lock_guard or `std::unique_lock) is used to protect data that is shared across multiple threads in the project code.
-  + A condition variable is used in the project.
-	  + A std::condition_variable is used in the project code to synchronize thread execution.
