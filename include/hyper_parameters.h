@@ -3,6 +3,11 @@
 
 #include <vector>
 
+struct WeightMatrices
+{
+    std::vector<std::vector<double>> layer_weight_matrix; // Stores the weight matrix between two layers
+};
+
 class HyperParameters
 {
 public:
@@ -18,7 +23,7 @@ public:
     float learning_rate() const;
 
 private:
-    std::vector<std::vector<double>> _weights;
+    std::vector<WeightMatrices> _weights;
     std::vector<int> _neurons_per_layer;
     float _learning_rate;
 };
