@@ -87,7 +87,7 @@ Class `IDXDataSet`. Opens one IDX file and stores the information gathered from 
 
 This files contain namespaces were the corresponding function are stored. This functions and mathematical function are used in the implementation of the pure virtual functions of the derived classes like `RunMNIST` in `run_mnist`.
 
-## Rubric
+## Rubric Points that are Addressed/Implemented
 
 ### Loops, Functions, I/O
 
