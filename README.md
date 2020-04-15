@@ -4,9 +4,9 @@
 
 Basically this is a project for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
-This application is a very simple neural network and uses the MNIST data set for training and testing. Though this problem is _solved_ it is an useful step into understanding machine learning. And it's just fun to write some code.
+This application is in the moment just a first step towards a very simple neural network for image classification with the MNIST data set. **Currently it is able to prepare all MNIST data and hyper-parameters for further processing, it is not able to learn.**
 
-The long term goal is to write a modular application so that different activation and loss functions can be tested. The short term goal is just a MVP.
+The long term goal is to write a modular application so that different activation and loss functions can be tested.
 
 ## Dependencies for Running Locally
 
@@ -31,52 +31,85 @@ The long term goal is to write a modular application so that different activatio
 3. Compile: `cmake .. && make`
 4. Run it: `./JaNNI`
 
+## Files
+
+### `main.cpp`
+
+Entry point. Creates `PrintInfo` and several `ExecutionTimer` instances to measure the running time. For demonstration purposes `RunMNIST` creates the object `run` with the following parameters:
+
+- Path to training images (curently a relative path that will work if the repo is cloned)
+- Path to training labels
+- Path to test images
+- Path to test labels
+- Information about input layer, hidden layers and the output layer
+- Learning rate
+
+### `print_info.h/.cpp` and `execution_timer.h/.cpp`
+
+This are simple 'helper classes' to print some information and measure times.
+
+### `run_mnist.h` and `run_mnist.cpp`
+
+`RunMNIST` inherits from the abstract base class `RunCreator` in `run_creator.h/.cpp`. The constructor calls the constructor from the class `RunCreator` and hands over the parameters.
+
+In class `RunMNIST` three functions have to be defined. These three 'steps' are the learning process. The functions are using the functions defined in the files which contains
+
+- `activation_function.h/.cpp`
+- `loss_function.h/.cpp`
+
+### Abstract base class in `run_creator.h` and `run_creator.cpp`
+
+The created class `RunCreator` has several strings a float and an **initializer list** as parameter. These parameters are used to create objects from the classes `MNISTDataSet` and `HyperParameters`.
+
+`MNISTDataSet` creates two objects, one for the training data and another one for the test data. The `HyperParameters` object holds the other information for the learning process.
+
+Also there are three **pure virtual functions** which must be provided by the derived class. The reason for this approach is, that the 'raw' setup of the learning process can be done in the derived class. The fine tuning will be done by calling the derived class with the appropriate parameters. Here: `RunMNIST` in `main.cpp`.
+
+### `hyper_parameters.h` and `hyper_parameters.cpp`
+
+Class `HyperParameters`. Here some parameters from `RunMNIST` are used. The constructor gets the initializer list and the float. This are the data for the number of neurons per layer and the number of the layers. The float equals the learning rate.
+
+This class is using the namespace `WeightInitialization` in `weight_initialization.h/.cpp`. The **functor** is used as random number generator to fill up the `_weights` 'matrices` within a specific range. Later, other algorithms can be added.
+
+### `mnist_data.h` and `mnist_data.cpp`
+
+Class `MNISTDataSet`. Each object can store all information from the binary file in IDX format. Since there are two files - one for training data and one for label data - the class `IDXDataSet` in the implementation will be instantiated twice. All gathered information will be stored in a `struct`.
+
+### `idx_data.h` and `idx_data.cpp`
+
+Class `IDXDataSet`. Opens one IDX file and stores the information gathered from the magic number, the size of each dimension and the data bytes. 
+
+[Definition](http://yann.lecun.com/exdb/mnist/) of the IDX file format.
+
+### `activation_function.h/.cpp` and `loss_function.h/.cpp`
+
+This files contain namespaces were the corresponding function are stored. This functions and mathematical function are used in the implementation of the pure virtual functions of the derived classes like `RunMNIST` in `run_mnist`.
+
 ## Rubric
 
-+ **README**
-  + A README with instructions is included with the project
-    + The README is included with the project and has instructions for building/running the project. 
-    + If any additional libraries are needed to run the project, these are indicated with cross-platform installation instructions.
-    + You can submit your writeup as markdown or pdf.
-  + The README indicates which project is chosen.
-    + The README describes the project you have built.
-    + The README also indicates the file and class structure, along with the expected behavior or output of the program.
-  + The README includes information about each rubric point addressed.
-    + The README indicates which rubric points are addressed. The README also indicates where in the code (i.e. files and line numbers) that the rubric points are addressed.
-+ **Compiling and Testing**
-  + The submission must compile and run.
-    + The project code must compile and run without errors.
-    + We strongly recommend using `cmake` and `make`, as provided in the starter repos. If you choose another build system, the code must compile on any reviewer platform.
-+ **Loops, Functions, I/O**
+### Loops, Functions, I/O
+
   + The project demonstrates an understanding of C++ functions and control structures.
-    + A variety of control structures are used in the project.
-    + The project code is clearly organized into functions.
   + The project reads data from a file and process the data, or the program writes data to a file.
-	  + The project reads data from an external file or writes data to a file as part of the necessary operation of the program.
+    + See `idx_data.h.cpp`. Data is provided in this repository in folder `mnist_data`.
   + The project accepts user input and processes the input.
-	  + The project accepts input from a user as part of the necessary operation of the program.
-+ **Object Oriented Programming**
+    + See `PrintInfo::proceed_confirmation()` in `print_info.cpp`
+
+### Object Oriented Programming
+
   + The project uses Object Oriented Programming techniques.
-	  + The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks.
   + Classes use appropriate access specifiers for class members.
-	  + All class data members are explicitly specified as public, protected, or private.
   + Class constructors utilize member initialization lists.
-	  + All class members that are set to argument values are initialized through member initialization lists.
   + Classes abstract implementation details from their interfaces.
-	  + All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways.
   + Classes encapsulate behavior.
-	  + Appropriate data and functions are grouped into classes. Member data that is subject to an invariant is hidden from the user. State is accessed via member functions.
   + Classes follow an appropriate inheritance hierarchy.
-	  + Inheritance hierarchies are logical. Composition is used instead of inheritance when appropriate. Abstract classes are composed of pure virtual functions. Override functions are specified.
-  + Overloaded functions allow the same function to operate on different parameters.
-	  + One function is overloaded with different signatures for the same function name.
   + Derived class functions override virtual base class functions.
-	  + One member function in an inherited class overrides a virtual base class member function.
-  + Templates generalize functions in the project.
-	  + One function is declared with a template that allows it to accept a generic parameter.
-+ Memory Management
+	  + See `run_mnist.h/.cpp` and `run_creator.h/.cpp`
+
+### Memory Management
+
   + The project makes use of references in function declarations.
-	  + At least two variables are defined as references, or two functions use pass-by-reference in the project code.
+	  + See `idx_data.h/.cpp`
   + The project uses destructors appropriately.
 	  + At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor.
   + The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate.
@@ -84,10 +117,12 @@ The long term goal is to write a modular application so that different activatio
   + The project follows the Rule of 5.
 	  + For all classes, if any one of the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor are defined, then all of these functions are defined.
   + The project uses move semantics to move data, instead of copying it, where possible.
-	  + For classes with move constructors, the project returns objects of that class by value, and relies on the move constructor, instead of copying the object.
+	  + See `mnist_data.cpp`
   + The project uses smart pointers instead of raw pointers.
 	  + The project uses at least one smart pointer: unique_ptr, shared_ptr, or weak_ptr. The project does not use raw pointers.
-+ **Concurrency**
+
+### Concurrency
+
   + The project uses multithreading.
 	  + The project uses multiple threads in the execution.
   + A promise and future is used in the project.
