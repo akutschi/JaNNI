@@ -15,11 +15,14 @@ public:
                const std::string &,
                const std::string &,
                const std::initializer_list<int> &,
+               const int &,
+               const int &,
                const float &);
 
     virtual void forward_propagation() = 0;
     virtual void calculate_loss() = 0;
     virtual void back_propagation() = 0;
+    void show_summary();
 
 protected:
     MNISTDataSet _mnist_training_data;

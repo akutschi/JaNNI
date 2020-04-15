@@ -4,9 +4,11 @@
 #include "hyper_parameters.h"
 #include "weight_initialization.h"
 
-HyperParameters::HyperParameters(const std::initializer_list<int> &layer_settings, const float &learning_rate_setting)
+HyperParameters::HyperParameters(const std::initializer_list<int> &layer_settings, const int &batch_size, const int &epochs, const float &learning_rate_setting)
 {
     _neurons_per_layer = layer_settings;
+    _batch_size = batch_size;
+    _epochs = epochs;
     _learning_rate = learning_rate_setting;
     create_weights();
 }
@@ -35,6 +37,21 @@ void HyperParameters::create_weights()
 
 void HyperParameters::update_weights() {
 
+}
+
+std::vector<int> HyperParameters::neurons_per_layer() const
+{
+    return _neurons_per_layer;
+}
+
+int HyperParameters::batch_size() const
+{
+    return _batch_size;
+}
+
+int HyperParameters::epochs() const
+{
+    return _epochs;
 }
 
 float HyperParameters::learning_rate() const

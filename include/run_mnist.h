@@ -12,12 +12,13 @@ public:
              const std::string &,
              const std::string &,
              const std::initializer_list<int> &,
+             const int &,
+             const int &,
              const float &);
 
     void forward_propagation();
     void calculate_loss();
     void back_propagation();
-
 };
 
 #endif

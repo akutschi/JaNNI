@@ -42,6 +42,8 @@ Entry point. Creates `PrintInfo` and several `ExecutionTimer` instances to measu
 - Path to test images
 - Path to test labels
 - Information about input layer, hidden layers and the output layer
+- Batch size
+- Epochs
 - Learning rate
 
 ### `print_info.h/.cpp` and `execution_timer.h/.cpp`
