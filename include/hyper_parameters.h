@@ -19,7 +19,7 @@ public:
 
     void create_weights();
     void update_weights();
-    std::vector<std::vector<double>> weights() const; // Get whole weight network "matrix"
+    std::vector<WeightMatrices> weights() const; // Get whole weight network "matrix"
     float learning_rate() const;
 
 private:
