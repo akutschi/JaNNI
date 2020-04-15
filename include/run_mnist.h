@@ -19,6 +19,8 @@ public:
     void forward_propagation();
     void calculate_loss();
     void back_propagation();
+    void training();
+    void test();
 };
 
 #endif

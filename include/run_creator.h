@@ -22,6 +22,8 @@ public:
     virtual void forward_propagation() = 0;
     virtual void calculate_loss() = 0;
     virtual void back_propagation() = 0;
+    virtual void training() = 0;
+    virtual void test() = 0;
     void show_summary();
 
 protected:

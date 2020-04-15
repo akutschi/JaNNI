@@ -54,7 +54,7 @@ This are simple 'helper classes' to print some information and measure times.
 
 `RunMNIST` inherits from the abstract base class `RunCreator` in `run_creator.h/.cpp`. The constructor calls the constructor from the class `RunCreator` and hands over the parameters.
 
-In class `RunMNIST` three functions have to be defined. These three 'steps' are the learning process. The functions are using the functions defined in the files which contains
+In class `RunMNIST` five functions have to be defined. These functions define the learning and testing process. The functions are using the functions defined in the files which contains
 
 - `activation_function.h/.cpp`
 - `loss_function.h/.cpp`

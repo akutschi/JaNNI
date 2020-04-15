@@ -34,3 +34,11 @@ void RunMNIST::back_propagation()
 {
     // Define function for back propagation
 }
+
+void RunCreator::training()
+{
+}
+
+void RunCreator::test()
+{
+}
