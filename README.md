@@ -1,5 +1,3 @@
-**The GitHub repository is just a mirror. The [original code](https://gitlab.com/akutschi/janni/) is maintained at [GitLab](https://gitlab.com/)**
-
 # JaNNI - Just another Neural Network Implementation
 
 This application is in the moment just a first step - and has to be rewritten - towards a very simple neural network for image classification with the MNIST data set. **Currently it is able to prepare all MNIST data and hyper-parameters for further processing, it is not able to learn.**
